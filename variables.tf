@@ -1,17 +1,32 @@
+#General
 variable "aws_region" {
   type = string
-  default = "us-east-1"
-}
-
-variable "project_name" {
-  type = string
+  description = "AWS Region to deploy"
 }
 
 variable "environment" {
   type = string
 }
 
-#EC2
+variable "project_name" {
+  type = string
+}
+
+#Network
+variable "vpc_cidr_block" {
+  type = string
+  default = "10.0.0.0/16"
+}
+
+variable "subnet_cidr_blocks" {
+  type = list(string)  
+}
+
+variable "availability_zone" {
+  type = list(string)
+}
+
+#EC2 Instances
 variable "instance_type" {
   type = string
   default = "t2.micro"
@@ -41,13 +56,12 @@ variable "key_pair_pub_key" {
   type = string
 }
 
-#Network
-variable "vpc_cidr_block" {
-  type = string
-  default = "10.0.0.0/16"
+variable "front_end_disk_size" {
+  type = number
+  default = 8
 }
 
-variable "subnet_cidr_block" {
-  type = string
-  default = "10.0.0.0/24"  
+variable "back_end_disk_size" {
+  type = number
+  default = 8
 }

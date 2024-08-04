@@ -1,7 +1,7 @@
 provider "aws" {
   access_key = "localstack"
   secret_key = "localstack"
-  region = "us-east-1"
+  region = var.aws_region
   s3_use_path_style           = false
   skip_credentials_validation = true
   skip_metadata_api_check     = true

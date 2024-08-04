@@ -18,17 +18,11 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
-variable "access_key_name" {
+variable "access_key" {
   type = string
-  default = "dev-key"
 }
 
-variable "front_end_disk_size" {
-  type = number
-  default = 8
-}
-
-variable "back_end_disk_size" {
+variable "disk_size" {
   type = number
   default = 8
 }
@@ -38,17 +32,10 @@ variable "ami_id" {
   default = "ami-0103953a003440c37"
 }
 
-variable "key_pair_pub_key" {
+variable "instance_security_group" {
   type = string
 }
 
-#Network
-variable "vpc_cidr_block" {
+variable "instance_name" {
   type = string
-  default = "10.0.0.0/16"
-}
-
-variable "subnet_cidr_block" {
-  type = string
-  default = "10.0.0.0/24"  
 }
