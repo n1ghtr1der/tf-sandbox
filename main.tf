@@ -12,20 +12,34 @@ module "sandbox_vpc" {
   environment = var.environment
 }
 
-module "front_end_sandbox_ec2_instance" {
+module "sandbox_instance_front" {
   source = "./modules/ec2"
   project_name = var.project_name
   environment = var.environment
   instance_security_group = module.sandbox_vpc.sandbox_front_end_sg_id
   instance_name = local.front_end_instance_name
   access_key = aws_key_pair.sandbox_key_pair.key_name
+  ami_id = var.ami_id
 }
 
-module "back_end_sandbox_ec2_instance" {
+# module "sandbox_repository_front" {
+#   source = "./modules/ecr"
+#   registry_name = local.front_end_repository_name
+#   encryption_type = var.encryption_type
+# }
+
+module "sandbox_instance_back" {
   source = "./modules/ec2"
   project_name = var.project_name
   environment = var.environment
   instance_security_group = module.sandbox_vpc.sandbox_back_end_sg_id
   instance_name = local.back_end_instance_name
   access_key = aws_key_pair.sandbox_key_pair.key_name
+  ami_id = var.ami_id
 }
+
+# module "sandbox_repository_back" {
+#   source = "./modules/ecr"
+#   registry_name = local.back_end_repository_name
+#   encryption_type = var.encryption_type
+# }

@@ -7,6 +7,7 @@ resource "aws_instance" "sandbox_instance" {
 
   root_block_device {
     volume_size = var.disk_size
+    volume_type = "gp3"
   }
 
   tags = {

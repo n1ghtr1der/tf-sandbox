@@ -1,5 +1,5 @@
 resource "aws_vpc" "sandbox_vpc" {
-  # cidr_block = var.vpc_cidr_block
+  cidr_block = var.vpc_cidr_block
   enable_dns_hostnames = true
   enable_dns_support = true
 
@@ -43,7 +43,7 @@ resource "aws_route_table" "sandbox_route_table" {
 resource "aws_route_table_association" "sandbox_route_table_association" {
   count = length(var.availability_zone)
   subnet_id = element(aws_subnet.sandbox_subnet.*.id, count.index)
-  route_table_id = aws_route_table.sandbox_route_table.id 
+  route_table_id = element(aws_route_table.sandbox_route_table.*.id, count.index)
 }
 
 # resource "aws_security_group" "sandbox_front_end_sg" {

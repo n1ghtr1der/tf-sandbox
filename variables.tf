@@ -49,19 +49,13 @@ variable "back_end_disk_size" {
 
 variable "ami_id" {
   type = string
-  default = "ami-0103953a003440c37"
 }
 
 variable "key_pair_pub_key" {
   type = string
 }
 
-variable "front_end_disk_size" {
-  type = number
-  default = 8
-}
-
-variable "back_end_disk_size" {
-  type = number
-  default = 8
+#ECR
+variable "encryption_type" {
+  type = string
 }

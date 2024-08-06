@@ -29,7 +29,6 @@ variable "disk_size" {
 
 variable "ami_id" {
   type = string
-  default = "ami-0103953a003440c37"
 }
 
 variable "instance_security_group" {
