@@ -7,6 +7,10 @@ variable "tags" {
   type = map(string)
   description = "Tags"
 }
+variable "env_name" {
+  type = string
+  description = "environment"
+}
 # === VPC ===
 variable "vpc_cidr" {
   type = string
@@ -32,4 +36,16 @@ variable "database_subnets_cidrs" {
 variable "availability_zones" {
   type = list(string)
   description = "VPC Availability Zones"
+}
+variable "cidr_whitelist" {
+  type = list(string)
+  description = "Whitelist CIDRs"
+}
+variable "vpc_peering" {
+  type = object({
+    cidr = string
+    connection_id = string
+  })
+  description = "VPC Peering"
+  default = null
 }

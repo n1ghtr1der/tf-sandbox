@@ -35,3 +35,7 @@ resource "aws_subnet" "database" {
     Name = "${var.project_name}-private-subnet-${count.index + 1}"
   }, var.tags)
 }
+
+resource "aws_internet_gateway" "this" {
+  vpc_id = aws_vpc.this.id
+}
